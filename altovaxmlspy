@@ -1,0 +1,31 @@
+
+
+Company: Third Pillar Systems, Inc.
+Key-Code:
+60VD99V-12Y9BY3-MXPV7G3-TCHUI23-Z47KPY1
+
+ 
+ 
+ 
+ sqlplus / as sysdba;
+
+while installation we should unlock few user and set password.otherwise later unlock to login.
+sqlplus / as sysdba;
+alter user scott account unlock;
+
+
+
+
+INNER JOIN: Here you can JOIN two tables with various operators, like:
+Equal To, “=”Not Equal To, “<>”Greater/Less Than, “>”, “<”, etc.EQUI JOIN: is a sub-category of INNER JOIN, here you only use Equal To operator “=”, like:
+SELECT E.EmpID, E.EmpName, D.DeptID, D.DeptNameFROM Employee E, Department DWHERE E.DeptID = D.DeptID— OR —
+SELECT E.EmpID, E.EmpName, D.DeptID, D.DeptNameFROM Employee EJOIN Department DON E.DeptID = D.DeptID
+
+
+Debugging jar source (codify) bacause API used in app (Macqueries or lp5) is not working
+We have to workspace A. Codify B. LP5.
+call "%EXECUTABLE%" jpda start %CMD_LINE_ARGS%set JAVA_HOME=D:\Java\jdk1.7.0_21set JAVA_OPTS=-Xms1024m -Xmx2048m -XX:PermSize=256m -XX:MaxPermSize=512m %JAVA_OPTS%
+
+-----------------------Tomcat 1st timesetenv.bat it is called by conf.... file by default
+startup.batreplace  call "%EXECUTABLE%" jpda start %CMD_LINE_ARGS%
+with  call "%EXECUTABLE%" start %CMD_LINE_ARGS%   
