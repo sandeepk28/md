@@ -1,0 +1,22 @@
+
+
+set JAVA_HOME=C:\Program Files\Java\jdk1.7.0_21
+
+set JAVA_OPTS=-Djava.net.preferIPv4Stack=true -Xms1024m
+-Xmx2048m -XX:PermSize=256m -XX:MaxPermSize=512m %JAVA_OPTS%
+
+
+
+
+-------------------
+
+
+Log4j.xml<category name="org.hibernate.SQL">        <priority
+value="DEBUG"/>    </category>
+
+
+
+
+
+
+
