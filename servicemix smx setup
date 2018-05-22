@@ -1,0 +1,67 @@
+
+
+Download service mix from this
+server:     smx-uat-clone-2090643111.us-west-2.elb.amazonaws.com
+credentials : tpsadmin/batman206
+
+directory - u01/
+
+Steps:
+1. Download service-mix from above URL and replace latest GIT document XSL
+under this path:
+<service-mix-download-folder>\etc\custom\xsl\document-service\tuscany_new
+2. run servicemix.bat file.
+3. After this, use list command to see all the running services. Make sure
+ThirdPillar document service must running.
+4. If you do any change in existing document XSL, then refresh document service
+with given ID(get from list command):
+ex: refresh 303 (where 303 is the port/address where document service is
+running)
+5. Change path of document service in integrationServiceConfig.xml in LP5:
+==========================    
+    <service name="appVersionSummaryService" enabled="true">
+            <marshaler
+style="XSTREAM" resource="doc-gen-full"
+inputKey="documentList" outputKey="documentsXml" />
+
+            <soaptransport
+resource="http://localhost:9999/outbound/documentServiceNew/"
+responseType="PAYLOAD" validateResponse="true">
+        
+               
+<properties>
+               
+    <property key="AUTH_TYPE"
+value="BASIC" type="AUTH" />
+               
+    <property key="USER"
+value="${esb.authuser}" type="AUTH" />
+               
+    <property key="PASSWORD"
+value="${esb.authpassword}" type="AUTH" />
+               
+</properties>
+               
+<operation localName="GenerateDocuments" />
+               
+<parameters>
+               
+    <parameter localName="documents"
+paramValue="documentsXml" paramType="Element" />
+               
+    <parameter localName="entities"
+paramValue="docRequestXML" paramType="Element" />
+               
+    <parameter localName="client"
+paramValue="data:tuscany_new" paramType="String" />
+               
+</parameters>
+            </soaptransport>
+            <unmarshaler
+style="XSTREAM" resource="genie-response-Full"
+contextLookupKey="documentList" />
+        </service>
+
+Regards,
+Gaganpreet Singh
+
